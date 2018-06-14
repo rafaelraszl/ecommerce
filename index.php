@@ -151,7 +151,7 @@ $app->get("/admin/forgot", function() {
 		"footer"=>false
 	]);
 
-	$page->setTpl("forgot-reset-success");
+	$page->setTpl("forgot");
 
 });
 
