@@ -96,6 +96,7 @@ class Mailer {
 	public function send()
 	{
 
+		$this->mail->CharSet = "UTF-8";
 		return $this->mail->send();
 	}
 }

@@ -26,7 +26,7 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="/res/admin/index2.html"><b>Admin</b>LTE</a>
+    <a href="/admin/login"><b>Admin</b>LTE</a>
   </div>
 
   <!-- /.lockscreen-item -->
@@ -38,7 +38,7 @@
     </div>
   </div>
   <div class="lockscreen-footer text-center">
-    Copyright &copy; 2014-2016 <b><a href="http://almsaeedstudio.com" class="text-black">Almsaeed Studio</a></b><br>
+    Copyright &copy; 2017-2018 <b><a href="http://almsaeedstudio.com" class="text-black">Mekhet Desenvolvimento</a></b><br>
     All rights reserved
   </div>
 </div>
