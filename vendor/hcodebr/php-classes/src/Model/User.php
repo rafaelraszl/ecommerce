@@ -22,8 +22,7 @@ class User extends Model {
 		if (count($results) === 0)
 		{
 
-			throw new \Exception("Usuário inexistente ou senha inválida.", 1);
-			
+			throw new \Exception("Usuário inexistente ou senha inválida.", 1);	
 		}
 
 		$data = $results[0];
@@ -37,12 +36,13 @@ class User extends Model {
 			$_SESSION[User::SESSION] = $user->getValues();
 
 			return $user;
-
-		} else {
-			throw new \Exception("Usuário inexistente ou senha inválida.", 1);
-
 		}
-		
+
+		else
+
+		{
+			throw new \Exception("Usuário inexistente ou senha inválida.", 1);
+		}
 	}
 
 	public static function verifyLogin($inadmin = true)
@@ -60,16 +60,13 @@ class User extends Model {
 
 			header("Location: /admin/login");
 			exit;
-
 		}
-
 	}
 
 	public static function logout()
 	{
 
 		$_SESSION[User::SESSION] = NULL;
-
 	}
 
 	public static function listAll()
@@ -78,7 +75,6 @@ class User extends Model {
 		$sql = new Sql();
 
 		return $sql->select("SELECT * FROM tb_users a INNER JOIN tb_persons b USING(idperson) ORDER BY b.desperson");
-
 	}
 
 	public function save()
@@ -96,7 +92,6 @@ class User extends Model {
 		));
 
 		$this->setData($results[0]);
-
 	}
 
 	public function get($iduser)
@@ -111,7 +106,6 @@ class User extends Model {
 		$data = $results[0];
 
 		$this->setData($data);
-
 	}
 
 	public function update()
@@ -130,7 +124,6 @@ class User extends Model {
 		));
 
 		$this->setData($results[0]);
-
 	}
 
 	public function delete()
@@ -141,7 +134,6 @@ class User extends Model {
 		$sql->query("CALL sp_users_delete(:iduser)", array(
 			":iduser"=>$this->getiduser()
 		));
-
 	}
 
 	public static function getForgot($email, $inadmin = true)
@@ -159,7 +151,9 @@ class User extends Model {
 		{
 			throw new \Exception("Não foi possível recuperar a senha.");
 		}
+
 		else
+
 		{
 			$data = $results[0];
 			$results2 = $sql->select("CALL sp_userspasswordsrecoveries_create(:iduser, :desip)", array(
@@ -190,6 +184,7 @@ class User extends Model {
 			}
 		}
 	}
+
 	public static function validForgotDecrypt($result)
 	{
 		$result = base64_decode($result);
@@ -215,25 +210,26 @@ class User extends Model {
 		{
 			throw new \Exception("Não foi possível recuperar a senha.");
 		}
+
 		else
+
 		{
 			return $results[0];
 		}
 	}
 
 	public static function setForgotUsed($idrecovery)
-	 {
+	{
 
 		$sql = new Sql();
 
 		$sql->query("UPDATE tb_userspasswordsrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", array(
 			":idrecovery"=>$idrecovery
 		));
-
-	 }
+	}
 
 	 public function setPassword($password)
-	 {
+	{
 
 		$sql = new Sql();
 
@@ -241,8 +237,7 @@ class User extends Model {
 			":password"=>$password,
 			":iduser"=>$this->getiduser()
 		));
-
-	 }
+	}
 }
 
 ?>
