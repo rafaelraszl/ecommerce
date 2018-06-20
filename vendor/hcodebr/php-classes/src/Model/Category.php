@@ -69,6 +69,21 @@ class Category extends Model {
 
 		file_put_contents($_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "categories-menu.html", implode('', $html));
 	}
+
+	public function getProducts($related = true)
+	{
+
+		$sql = new Sql();
+
+		if ($related === true) {
+
+			$sql->select("SELECT")
+
+		} else {
+
+
+		}
+	}
 }
 
 ?>
