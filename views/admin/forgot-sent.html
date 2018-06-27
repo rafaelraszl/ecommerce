@@ -26,7 +26,7 @@
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="/admin/login"><b>Admin</b>LTE</a>
+    <a href="/admin/login"><b>Voltar ao Login</b></a>
   </div>
 
   <!-- /.lockscreen-item -->
