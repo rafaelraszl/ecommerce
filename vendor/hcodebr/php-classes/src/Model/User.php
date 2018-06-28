@@ -114,6 +114,7 @@ class User extends Model {
 	{
 
 		$_SESSION[User::SESSION] = NULL;
+
 	}
 
 	public static function listAll()
@@ -216,14 +217,23 @@ class User extends Model {
 			else
 			{
 				$dataRecovery = $results2[0];
+
 				$iv = random_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+
 				$code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
+
 				$result = base64_encode($iv.$code);
+
 				if ($inadmin === true) {
+
 					$link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=$result";
+
 				} else {
+
 					$link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
+
 				} 
+				
 				$mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir a senha", "forgot", array(
 					"name"=>$data['desperson'],
 					"link"=>$link
@@ -329,7 +339,7 @@ class User extends Model {
 	public static function clearErrorRegister()
 	{
 
-		$_SESSION[User::ERROR] = NULL;
+		$_SESSION[User::ERROR_REGISTER] = NULL;
 	}
 
 	public static function checkLoginExist($login)
